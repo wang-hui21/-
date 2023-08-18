@@ -1,5 +1,5 @@
 public class train {
-    public static void main(String[] args) {
+    public static void main(String[] args ) {
         System.out.println("Hello World!");
         int[] a={2,3,5,12,4,7,65,8,9,56,44};
         int key=56;
