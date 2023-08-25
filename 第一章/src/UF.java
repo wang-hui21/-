@@ -1,12 +1,55 @@
 public class UF {
-    private int[] id;    //鍒嗛噺ID锛堜互瑙︾偣浣滀负绱㈠紩
-    private int count;  //鍒嗛噺鏁伴噺
-    public UF(int N){
-        //鍒濆鍖栧垎閲廼d鏁扮粍
-        count=N;
-        id =new int[N];
-        for(int i=0;i<N;i++){
-            id[i]=i;
+    private int[] id;    //分量ID（以触点作为索引
+    private int count;  //分量数量
+
+    public UF(int N) {
+        //初始化分量id数组
+        count = N;
+        id = new int[N];
+        for (int i = 0; i < N; i++) {
+            id[i] = i;
         }
+    }
+
+    public int count() {
+        return count;
+    }
+
+    public boolean connected(int p, int q) {
+        return find(p) == find(q);
+    }
+
+    public int find(int p) {
+        return id[p];
+    }
+
+    public void union(int p, int q)    //这两个函数是UF算法的主题，将在后面讨论实现
+    {
+        //将p和q归并到相同的分量中
+        int pID = find(p);
+        int qID = find(q);
+
+        //如果p和q已经在相同的分量中则不需要采取任何行动
+        if (pID == qID) return;
+
+        //将p的分量重命名为q的名称
+        for (int i = 0; i < id.length; i++) {
+            if (id[i] == pID) id[i] = qID;
+        }
+        count--;    //记录丢弃多少个整数对
+    }
+
+    public static void main(String[] args) {
+        //解决由StdIn得到的动态连通性问题
+        int N = StdIn.readInt();      //读取触点数量
+        UF uf = new UF(N);
+        while (!StdIn.isEmpty()) {
+            int p = StdIn.readInt();
+            int q = StdIn.readInt();              //读取整数对
+            if (uf.connected(p, q)) continue;     //如果已经连通则忽略
+            uf.union(p, q);                      //归并分量
+            StdOut.println(p + " " + q);            //打印连接
+        }
+        StdOut.println(uf.count() + "components");
     }
 }
