@@ -19,24 +19,37 @@ public class UF {
         return find(p) == find(q);
     }
 
-    public int find(int p) {
-        return id[p];
+//    public int find(int p) {
+//        return id[p];
+//    }
+    private int find(int p){
+        //找出分量的名称
+        while(p!=id[p]) p=id[p];
+        return p;
     }
 
-    public void union(int p, int q)    //这两个函数是UF算法的主题，将在后面讨论实现
-    {
-        //将p和q归并到相同的分量中
-        int pID = find(p);
-        int qID = find(q);
-
-        //如果p和q已经在相同的分量中则不需要采取任何行动
-        if (pID == qID) return;
-
-        //将p的分量重命名为q的名称
-        for (int i = 0; i < id.length; i++) {
-            if (id[i] == pID) id[i] = qID;
-        }
-        count--;    //记录丢弃多少个整数对
+//    public void union(int p, int q)    //这两个函数是UF算法的主题，将在后面讨论实现
+//    {
+//        //将p和q归并到相同的分量中
+//        int pID = find(p);
+//        int qID = find(q);
+//
+//        //如果p和q已经在相同的分量中则不需要采取任何行动
+//        if (pID == qID) return;
+//
+//        //将p的分量重命名为q的名称
+//        for (int i = 0; i < id.length; i++) {
+//            if (id[i] == pID) id[i] = qID;
+//        }
+//        count--;    //记录丢弃多少个整数对
+//    }
+    public void union(int p,int q){
+        //将p和q的根节点统一
+        int pRoot=find(p);
+        int qRoot=find(q);
+        if (pRoot==qRoot) return;
+        id[pRoot]=qRoot;
+        count--;
     }
 
     public static void main(String[] args) {
