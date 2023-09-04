@@ -1,6 +1,11 @@
-public class Example {
+public class Insertion {
     public static void sort(Comparable[] a){
-
+        //½«a[]°´ÉıĞòÅÅÁĞ
+        int N=a.length;
+        for (int i=1;i<N;i++){
+            for(int j=i;j>0&&less(a[j],a[j-1]);j--)
+                exch(a,j,j-1);
+        }
     }
     private static boolean less(Comparable v,Comparable w){
         return v.compareTo(w)<0;
@@ -16,14 +21,14 @@ public class Example {
         StdOut.println();
     }
     public static boolean isSorted(Comparable[] a) {
-        //æµ‹è¯•æ•°æ®æ˜¯å¦æœ‰åº
+        //²âÊÔÊı¾İÊÇ·ñÓĞĞò
         for (int i = 1; i < a.length; i++) {
             if (less(a[i], a[i - 1])) return false;
         }
         return true;
     }
     public static void main(String[] args){
-        //ä»æ ‡å‡†è¾“å…¥è¯»å–å­—ç¬¦ä¸²ï¼Œå°†ä»–ä»¬æ’åºå¹¶è¾“å‡º
+        //´Ó±ê×¼ÊäÈë¶ÁÈ¡×Ö·û´®£¬½«ËûÃÇÅÅĞò²¢Êä³ö
         String[] a=In.readStrings();
         sort(a);
         assert isSorted(a);
