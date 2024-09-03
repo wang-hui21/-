@@ -3,5 +3,8 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/第一章/src/Evaluate.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/第一章/src/UF.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/第二章/src/Insertion.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/第二章/src/Selection.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/第二章/src/Shell.java" charset="GBK" />
   </component>
 </project>
