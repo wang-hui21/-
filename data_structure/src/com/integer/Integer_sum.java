@@ -60,9 +60,6 @@ public class Integer_sum {
         //  返回Integer的哈希码值
         Integer c=100;
         int hash = c.hashCode();
-        
-
-
 
     }
 }
